@@ -1,0 +1,47 @@
+<div id="user-view-container" class="flex-container" fxLayout fxLayoutAlign="space-around center">
+  <div *ngIf="(userloading$ | async)" class="spinner-container" fxFlex="100%" fxLayoutAlign="center center">
+    <mat-spinner [diameter]="200"></mat-spinner>
+  </div>
+  <div *ngIf="!(userloading$ | async)" id="user-container" fxLayout="column" fxLayoutGap="20px" fxFlex="75%"
+    fxFlex.lt-sm="100%">
+    <mat-card>
+      <mat-card-content>
+        <strong>
+          Placeholder Content until user is expanded
+        </strong>
+        <mat-list *ngIf="userSubject.value">
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <mat-icon color="primary" class="fas fa-user" mat-list-icon></mat-icon>
+            <h4 mat-line>First Name</h4>
+            <p mat-line> {{userSubject.value.first_name}}</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-icon color="primary" class="fas fa-user" mat-list-icon></mat-icon>
+            <h4 mat-line>Last Name</h4>
+            <p mat-line> {{userSubject.value.last_name}}</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-icon color="primary" class="fas fa-envelope" mat-list-icon></mat-icon>
+            <h4 mat-line>Email</h4>
+            <p mat-line> {{userSubject.value.email_address}}</p>
+          </mat-list-item>
+
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <mat-icon color="primary" class="fas fa-calendar" mat-list-icon></mat-icon>
+            <h4 mat-line>Created</h4>
+            <p mat-line> {{userSubject.value.created_at.date | date:'fullDate'}}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon color="primary" class="fas fa-calendar" mat-list-icon></mat-icon>
+            <h4 mat-line>Updated</h4>
+            <p mat-line> {{userSubject.value.modified_at.date | date:'fullDate'}}</p>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

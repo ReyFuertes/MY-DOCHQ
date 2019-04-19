@@ -1,0 +1,51 @@
+<mat-card class="mat-elevation-z8">
+
+  <mat-card-header fxLayout="row">
+    <mat-card-title>User Overview</mat-card-title>
+    <mat-card-subtitle>Select a user to view</mat-card-subtitle>
+    <div fxFlex></div>
+    <button *ngIf="userId" mat-icon-button color="primary" (click)="clearUser($event)">
+      <mat-icon class="fas fa-times"></mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content *ngIf="loading$ | async">
+    <div class="spinner-container" fxFlex="100%" fxLayoutAlign="center center">
+      <mat-spinner [diameter]="40"></mat-spinner>
+    </div>
+  </mat-card-content>
+  <mat-card-content *ngIf="!(loading$ | async) && !userId">
+    <p>
+      <mat-icon color="primary" class="fas fa-info-circle"></mat-icon>&nbsp;No user selected
+    </p>
+  </mat-card-content>
+  <mat-card-content *ngIf="!(loading$ | async) && userId">
+    <mat-list *ngIf="selectedUserSubject.value">
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-icon color="primary" class="fas fa-envelope" mat-list-icon></mat-icon>
+        <h4 mat-line>Email</h4>
+        <p mat-line> {{selectedUserSubject.value.email}}</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-icon color="primary" class="fas fa-calendar" mat-list-icon></mat-icon>
+        <h4 mat-line>Created</h4>
+        <p mat-line> {{selectedUserSubject.value.created_at.date | date:'mediumDate'}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon color="primary" class="fas fa-calendar" mat-list-icon></mat-icon>
+        <h4 mat-line>Updated</h4>
+        <p mat-line> {{selectedUserSubject.value.updated_at.date | date:'mediumDate'}}</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!(loading$ | async) && userId">
+    <div class="button-row" fxLayout="row" fxLayoutAlign="space-evenly center">
+      <a [routerLink]="['../view', selectedUserSubject.value.id]" routerLinkActive="router-link-active" color="primary"
+        mat-raised-button>View&nbsp;<mat-icon class="far fa-eye"></mat-icon></a>
+      <a [routerLink]="['../edit', selectedUserSubject.value.id]" routerLinkActive="router-link-active" color="primary"
+        mat-raised-button>Edit&nbsp;<mat-icon class="far fa-edit"></mat-icon></a>
+    </div>
+  </mat-card-actions>
+</mat-card>

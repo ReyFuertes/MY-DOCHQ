@@ -1,0 +1,29 @@
+@keyframes heartbeat {
+    0% {
+        transform: scale(0.90, 0.90);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.logo {
+    fill: #1F2529;
+    stroke: #1F2529;
+    stroke-miterlimit: 10;
+    stroke-width: 1px;
+}
+
+.group-animation {
+    transform-origin: center;
+    animation: heartbeat;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.dochq-loader {
+    width: 225px;
+    height: 225px;
+}

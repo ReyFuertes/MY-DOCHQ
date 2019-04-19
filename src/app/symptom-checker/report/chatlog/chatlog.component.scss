@@ -1,0 +1,13 @@
+@import "../../../../style/variables";
+
+.user-msg {
+    background-color: mat-color($app-primary, 100);
+}
+
+.bot-msg {
+    background-color: mat-color($app-accent, 100);
+}
+
+.unknown-msg {
+    background-color: mat-color($app-warn, 100);
+}

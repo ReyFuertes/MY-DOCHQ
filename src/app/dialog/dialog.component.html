@@ -1,0 +1,11 @@
+<div fxLayout="row" fxFlexFill fxLayoutAlign="center center">
+
+  <div fxFlex="10"></div>
+  <div fxFlex="80">
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+    <div mat-dialog-content>
+      <p>{{ data.description }}</p>
+    </div>
+  </div>
+  <div fxFlex="10" fxFlexFill> <i class="far fa-times-circle" (click)="dialogRef.close()"></i></div>
+</div>

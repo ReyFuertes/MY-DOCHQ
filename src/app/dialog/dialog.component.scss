@@ -1,0 +1,29 @@
+@import '../../style/variables';
+
+::ng-deep .mat-dialog-container {
+  max-width: 450px;
+  min-height: 350px;
+}
+
+::ng-deep  .mat-dialog-title {
+  margin: 0 0 20px;
+  display: block;
+  font-size: 30px !important;
+  margin-bottom: 0;
+}
+
+::ng-deep .mat-dialog-container {
+  display: flex;
+}
+
+::ng-deep .cdk-overlay-pane {
+  max-width: 90vw !important;
+}
+
+.fa-times-circle {
+  position: relative;
+  top: -15px;
+  left: 27px;
+  font-size: 30px;
+  color: $color-gray;
+}

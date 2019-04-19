@@ -1,0 +1,21 @@
+<div class="flex-container" fxLayout fxLayoutAlign="space-around center">
+  <div *ngIf="(scloading$ | async)" class="spinner-container" fxFlex="100%" fxLayoutAlign="center center">
+      <h2 mat-header>Loading Symptom Checker...</h2>
+      <app-dochq-heart-loader></app-dochq-heart-loader>
+  </div>
+  <div *ngIf="!(scloading$ | async)" id="sc-main-container" fxLayout="column" fxLayoutGap="20px" fxFlex="50%"
+    fxFlex.lt-sm="100%">
+    <mat-card id="sc-chat-card">
+      <mat-card-header id="sc-header">
+        <div mat-card-avatar class="sc-header-image"></div>
+        <mat-card-title>DocHQ</mat-card-title>
+        <mat-card-subtitle>Symptom Checker</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxFlex="100%" fxLayoutAlign="center center">
+          <i class="fas fa-meh-rolling-eyes fa-9x"></i>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

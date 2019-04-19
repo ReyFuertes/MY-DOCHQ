@@ -1,0 +1,141 @@
+<div class="register__card">
+  <div class="box-shadow" fxLayout="row" fxLayout.lt-md="column">
+    <div class="register__card--left" fxLayout.lt-md="column" fxLayout.gt-md="row" fxFlex="100" fxFlex.gt-md="50">
+      <div fxFlex="100">
+        <div class="register__card--right__content">
+          <h3>REGISTRATION</h3>
+          <form novalidate (ngSubmit)="onSubmit()" [formGroup]="registerForm" *ngIf="!showSuccessMessage">
+            <div fxLayout="row">
+              <div fxFlex="100" class="">
+                <mat-form-field floatLabel="never" class="input-full-width">
+                  <input type="text" matInput placeholder="First Name" maxlength="50" autocomplete="off" formControlName="first_name">
+                  <mat-error *ngIf="registerForm.get('first_name').hasError('required') && (registerForm.get('first_name').dirty || registerForm.get('first_name').touched)">
+                    First Name is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <div fxFlex="100" class="">
+                <mat-form-field floatLabel="never" class="input-full-width">
+                  <input type="text" matInput placeholder="Last Name" maxlength="50" autocomplete="off" formControlName="last_name">
+                  <mat-error *ngIf="registerForm.get('last_name').hasError('required') && (registerForm.get('last_name').dirty || registerForm.get('last_name').touched)">
+                    Last Name is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <div fxFlex="100" class="">
+                <mat-form-field floatLabel="never" class="input-full-width">
+                  <input type="email" matInput placeholder="Email" maxlength="50" autocomplete="off" formControlName="email_address">
+                  <mat-error *ngIf="registerForm.get('email_address').hasError('required') && (registerForm.get('email_address').dirty || registerForm.get('email_address').touched)">
+                    Email is required
+                  </mat-error>
+                  <mat-error *ngIf="registerForm.get('email_address').hasError('email') && (registerForm.get('email_address').dirty || registerForm.get('email_address').touched)">
+                    Please enter a valid email format e.g 'johndoe@email.com'
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <div fxFlex="100" class="">
+                <mat-form-field floatLabel="never" class="input-full-width">
+                  <input type="text" matInput placeholder="Department" maxlength="50" autocomplete="off" formControlName="department">
+                  <mat-error *ngIf="registerForm.get('department').hasError('required') && (registerForm.get('department').dirty || registerForm.get('department').touched)">
+                    Department is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <div fxFlex="100" class="">
+                <mat-form-field floatLabel="never" class="input-full-width">
+                  <input type="password" matInput placeholder="Password" maxlength="50" autocomplete="off" formControlName="password">
+                  <mat-error *ngIf="validationMsgs.value && validationMsgs.value.password">
+                    <div *ngIf="registerForm.get('password').hasError('required') && (registerForm.get('password').dirty || registerForm.get('password').touched)">{{validationMsgs.value.password.required}}</div>
+                    <div *ngIf="registerForm.get('password').hasError('minlength') && (registerForm.get('password').dirty || registerForm.get('password').touched)">{{validationMsgs.value.password.minlength}}</div>
+                    <div *ngIf="registerForm.get('password').hasError('pattern') && (registerForm.get('password').dirty || registerForm.get('password').touched)">{{validationMsgs.value.password.pattern}}</div>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <div fxFlex="100" class="">
+                <mat-form-field floatLabel="never" class="input-full-width">
+                  <input type="password" matInput placeholder="Confirm Password" maxlength="50" autocomplete="off" formControlName="confirmPassword">
+                  <mat-error *ngIf="validationMsgs.value && validationMsgs.value.password">
+                    <div *ngIf="registerForm.get('confirmPassword').hasError('matching_password') && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">{{validationMsgs.value.password.matching_password}}</div>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <div fxFlex="100" class="form__submit">
+                <button type="submit" mat-button class="dochq-btn__primary" [disabled]="registerButtonDisabled">SIGN UP</button>
+              </div>
+            </div>
+          </form>
+          <div class="right__content--success-register" fxLayout="column" fxLayoutAlign="space-evenly center" *ngIf="showSuccessMessage">
+            <div fxFlex.md="100">
+              <h3>
+                Registration Successful
+              </h3>
+            </div>
+
+            <div fxFlex.md="100">
+              <button type="button" mat-button routerLink="/user/login" class="dochq-btn__link">LOGIN NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <div fxHide.gt-sm class="left__content--already-login" fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div fxFlex.lt-xs="80%" fxFlex.md="50">
+            <h3>
+              Already have an account?
+            </h3>
+          </div>
+
+          <div fxFlex.lt-xs="20%" fxFlex.md="50">
+            <button type="button" mat-button routerLink="/user/login" class="dochq-btn__link">LOGIN NOW</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="register__card--right" fxHide.lt-md fxFlexFill fxFlex="100" fxLayout.lt-sm="column" fxLayout.gt-md="row" fxFlex.gt-md="50">
+      <div class="register__card--left__content" fxFlex.lt-md="100" fxFlex.lt-sm="100">
+        <img src="/assets/svg/icon-registration.svg" />
+        <h2>
+          Register now to access our free sickness management tool.
+        </h2>
+        <hr class="left__content--hr" />
+        <div class="clear-both"> </div>
+        <mat-list>
+          <mat-list-item><i class="fas fa-circle red-dot"></i> Easily upload employee details </mat-list-item>
+          <mat-list-item><i class="fas fa-circle red-dot"></i> Manage sick leave for each employee</mat-list-item>
+          <mat-list-item><i class="fas fa-circle red-dot"></i> Automatically calculated Bradford scores</mat-list-item>
+          <mat-list-item><i class="fas fa-circle red-dot"></i> Record and store sickness related information
+          </mat-list-item>
+        </mat-list>
+
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div fxFlex="65">
+            <h3>
+              Already have an account?
+            </h3>
+          </div>
+          <div fxFlex="35">
+            <button type="button" mat-button routerLink="/user/login" class="dochq-btn__link">LOGIN NOW</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

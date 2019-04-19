@@ -1,0 +1,37 @@
+<div id="user-upsert-container" class="flex-container" fxLayout fxLayoutAlign="space-around center">
+  <div *ngIf="(userloading$ | async)" class="spinner-container" fxFlex="100%" fxLayoutAlign="center center">
+    <mat-spinner [diameter]="200"></mat-spinner>
+  </div>
+  <div *ngIf="!(userloading$ | async)" fxLayout="column" fxLayoutGap="20px" fxFlex="50%" fxFlex.lt-sm="100%">
+    <h1 class="mat-h1"> {{formMode[selectedFormMode] | titlecase}} User</h1>
+    <mat-card fxLayout="column" fxLayoutGap="20px" fxFlex="100%" fxFlex.lt-sm="100%">
+      <mat-card-content fxLayout="column" fxLayoutAlign="start">
+        <div fxFlex="100%" fxFlex.lt-sm="100%">
+          <form novalidate id="upsert-form" (ngSubmit)="onSubmit()" [formGroup]="userForm">
+            <div fxLayout="column" fxLayoutGap="20px" fxFlex="50%" fxFlex.lt-sm="100%">
+              <mat-form-field>
+                <input id="emailId" matInput formControlName="email" placeholder="Email" required>
+                <mat-error *ngIf="displayMessage.email">{{displayMessage.email}}</mat-error>
+              </mat-form-field>
+              <button type="submit" color="primary" [disabled]="!userForm.valid" mat-raised-button>Submit</button>
+            </div>
+          </form>
+        </div>
+      </mat-card-content>
+      <mat-card-footer fxFlex="100%" fxFlex.lt-sm="100%" *ngIf="selectedFormMode === formMode.edit">
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div *ngIf="userModel.created_at">
+            <small>Created:&nbsp;
+              {{userModel.created_at.date | date:'short'}}
+            </small>
+          </div>
+          <div *ngIf="userModel.updated_at">
+            <small>Updated:&nbsp;
+              {{userModel.updated_at.date | date:'short'}}
+            </small>
+          </div>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+@import "../../style/variables";
+#sc-main-container {
+    margin-top: 2vh;
+}
+
+#sc-chat-card{
+    height: 70vh;
+    max-height: 70vh;
+    background: mat-color($app-primary, 100);
+    padding-top: 0.5rem; 
+
+    mat-card-content {
+        max-height: 50vh;
+    }
+}
+
+.sc-header-image {
+    background-image: url('../../assets/img/logo/mobile-logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

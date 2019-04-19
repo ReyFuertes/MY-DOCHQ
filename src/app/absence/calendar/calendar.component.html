@@ -1,0 +1,36 @@
+<div class="cal__nav" fxLayout="row" fxFlexAlign="space-around center">
+  <div fxFlex="25" fxLayoutAlign="center center">
+    <i class="fas fa-chevron-left"></i>
+    <span class="cal__nav--action" mwlCalendarToday [(viewDate)]="viewDate">
+      Today
+    </span>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+  <div class="cal__nav-date--title" fxFlex="50" fxLayoutAlign="center center">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div fxFlex="25" fxLayoutAlign="center center">
+    <span class="cursor-p" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
+      <i class="fas fa-th"></i> <span class="cal__nav--view-text">Month</span>
+    </span>
+    <span class="cursor-p" (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">
+      <i class="fas fa-list"></i> <span class="cal__nav--view-text">Week</span>
+    </span>
+  </div>
+</div>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+                           [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+                           (eventClicked)="handleEvent('Clicked', $event.event)"
+                           (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+                          (eventClicked)="handleEvent('Clicked', $event.event)"
+                          (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+                         (eventClicked)="handleEvent('Clicked', $event.event)"
+                         (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-day-view>
+</div>

@@ -1,0 +1,272 @@
+@import "../../../style/variables";
+
+h1 {
+  margin: 10px;
+  position: relative;
+  top: 5px;
+}
+
+.login {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__card {
+  max-width: 1100px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(145, 145, 145, 1);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(145, 145, 145, 1);
+  box-shadow: 0px 3px 5px 0px rgba(145, 145, 145, 1);
+}
+
+.red-dot {
+  color: $color-red;
+}
+
+.fa-circle {
+  margin-right: 10px;
+}
+
+.login__card--left {
+  background-color: $bg-smoke;
+  border-radius: 4px 0 0 4px;
+  padding: 50px;
+  min-height: 575px;
+}
+
+.login__card--left__content {
+  h2 {
+    display: block;
+    color: $color-green;
+    font-weight: 400;
+  }
+
+  mat-list {
+    display: block;
+  }
+}
+
+.login__card--right {
+  background-color: $bg-black;
+  border-radius: 0 4px 4px 0;
+  min-height: 575px;
+  padding: 50px;
+}
+
+.login__card--right__content {
+
+  h3 {
+    color: $color-white;
+    margin: 0;
+  }
+
+  .right__content--error {
+    padding: 20px 0;
+  }
+
+  .right__content--email {
+    margin: 20px 0;
+  }
+
+  .right__content--forgot-password {
+    text-align: right;
+    color: $color-gray;
+  }
+
+  .right__content--remember-me {
+    ::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+      color: $color-gray;
+    }
+  }
+}
+
+::ng-deep .mat-list-item-content {
+  font-size: 22px;
+}
+
+::ng-deep mat-list-item {
+  margin-bottom: 20px;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: $bg-white;
+}
+
+::ng-deep .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  color: $color-white;
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+  color: $color-white;
+}
+
+::ng-deep input.mat-input-element {
+  color: $color-white;
+  font-size: 22px;
+  font-weight: 100;
+  padding-left: 20px;
+}
+
+::ng-deep .mat-form-field-label-wrapper {
+  left: 20px !important;
+}
+
+::ng-deep .mat-checkbox-frame {
+  border-radius: 0;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: $bg-gray !important;
+}
+
+::ng-deep .mat-ripple-element {
+  background: rgba(27, 142, 241, .4) !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  border-radius: 0;
+}
+
+.fa-user,
+.fa-lock {
+  font-size: 22px;
+  color: $color-white;
+  margin: 10px 0;
+  position: relative;
+  top: -6px;
+}
+
+.input-full-width {
+  width: 100%;
+}
+
+::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+  color: $color-white;
+}
+
+::ng-deep .mat-checkbox-inner-container {
+  border: thin $color-gray solid;
+  color: $color-gray;
+}
+
+.right__content--btn-login {
+  margin: 50px 0;
+
+  .dochq-btn__primary {
+    background-color: $bg-green;
+    color: $color-white;
+    border-radius: 20px;
+    height: 40px;
+    width: 100%;
+  }
+}
+
+.right__content--new-to-text {
+  padding: 10px;
+  text-align: left;
+}
+
+.right__content--btn-sign-now {
+  text-align: right;
+
+  .dochq-btn__basic {
+    font-size: 18px;
+    color: $color-green;
+    border-radius: 20px;
+    border: thin $color-green solid;
+  }
+}
+
+.clear-both {
+  clear: both;
+}
+
+.login__card--left--hr {
+  display: block;
+  width: 25%;
+  float: left;
+  border-bottom: none;
+  border-top: 2px $color-green solid;
+}
+
+@media (max-width: 959px) {
+  .login__card {
+    justify-content: start;
+  }
+
+  .login__card--left {
+    padding: 20px;
+    min-height: 75px;
+  }
+
+  .login__card--right {
+    padding: 30px;
+  }
+
+  .login__card--left__content {
+    max-height: 100px;
+
+    h1 {
+      text-align: center;
+      margin: 10px;
+    }
+
+    h2,
+    .login__card--left--hr,
+    mat-list {
+      display: none;
+    }
+  }
+}
+
+
+@media (max-width: 600px) {
+  .login__card--left {
+    padding: 20px;
+  }
+
+  .login__card--right {
+    min-height: 540px;
+  }
+
+  .right__content--new-to-text {
+    font-size: 16px;
+  }
+
+  ::ng-deep .mat-checkbox-label {
+    font-size: 12px;
+  }
+
+  .right__content--forgot-password {
+    font-size: 12px;
+    padding-top: 5px;
+  }
+}
+
+
+@media (max-width: 320px) {
+  .right__content--btn-sign-now .dochq-btn__basic {
+    font-size: 14px;
+    height: 35px;
+  }
+
+  .right__content--new-to-text {
+    font-size: 14px;
+  }
+}

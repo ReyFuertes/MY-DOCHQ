@@ -1,0 +1,132 @@
+@import "../../style/_variables.scss";
+.onboarding-medical-questionnaire{
+  font-size: 15px;
+  margin: 2rem auto 0 auto;
+  width: 70%;
+
+  .text{
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .subtext{
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+
+  .step__section-title{
+    color: $primary;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .step__content{
+    margin-bottom: 25px;
+  }
+
+  .step__ul {
+    list-style: none;
+    padding: 0;
+    line-height: 1.7;
+  }
+
+  .file-upload{
+    padding-top: 1rem;
+  }
+
+  .file-upload__filename{
+    display: inline-block;
+  }
+
+  .file-upload__filepicker{
+    opacity: 0;
+    position: absolute;
+  }
+
+  .file-upload__label
+  {
+    margin: 0 10px 10px 0;
+  }
+
+  .list{
+    margin-bottom: 1rem;
+  }
+
+  .list__list-item{
+    margin-bottom: 1rem;
+  }
+
+  .submit-button{
+    width: 200px;
+    margin-top: 40px;
+    margin-right: 15px;
+  }
+
+  @media (max-width: 575px) {
+    width: 100%;
+    /deep/ {
+      .mat-horizontal-stepper-header{
+        padding: 0 15px;
+      }
+    }
+  }
+
+  // Angular Material CSS Overrides
+  /deep/ {
+    .mat-radio-button{
+      margin-right: 15px;
+    }
+    .mat-checkbox-layout{
+      white-space: initial;
+    }
+    .mat-checkbox-label{
+      font-size: 15px;
+    }
+    .mat-radio-group{
+      margin-bottom: 15px;
+    }
+    .mat-list-item-content{
+      padding: 0;
+      width: 100%;
+    }
+    .mat-step-header .mat-step-icon-state-done,
+    .mat-step-header .mat-step-icon-state-edit{
+      background: $primary;
+    }
+    .mat-step-header .mat-step-icon-selected{
+      background: $accent;
+    }
+    .mat-button,
+    label[for=userPhoto],
+    label[for=idCardPhoto]{
+      background: $accent;
+      color: #FFF;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 0 30px;
+    }
+    .mat-button[matsteppernext]{
+      margin-top: 40px;
+      margin-right: 15px;
+    }
+    .mat-button[matstepperprevious]{
+      background: $primary;
+      margin-top: 40px;
+      margin-right: 15px;
+    }
+  }
+}
+
+/deep/ {
+  .app-is-mobile[_ngcontent-c0] .app-sidenav-container[_ngcontent-c0]{
+    flex: 1;
+  }
+  .app-is-mobile .mat-step-label{
+    display: none;
+  }
+  .mat-stepper-horizontal,
+  .mat-stepper-vertical{
+    background: none!important;
+  }
+}

@@ -1,0 +1,43 @@
+<section class="condition-section">
+  <h4 mat-header>Condition(s)</h4>
+  <p>Based off this chat we detected a chance of the following {{diagnosis.conditions.length}} condition(s):</p>
+</section>
+<div fxLayout="column" fxLayoutAlign="space-evenly  stretch" fxLayoutGap="20px">
+  <!-- Provide a card  if no conditions have been detected -->
+  <mat-card class="no-conditon-card" *ngIf="diagnosis.conditions.length === 0">
+    <mat-card-header>
+      <mat-card-title><i class="fas fa-info-circle"></i>&nbsp;No Conditions Detected</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      It doesn't look like any conditions were detected as part of this chat
+    </mat-card-content>
+  </mat-card>
+  <!-- Provide a card to serve as a disclaimer -->
+  <mat-card class="disclaimer-card">
+    <mat-card-header>
+      <i mat-card-avatar class="fas fa-info-circle"></i>
+      <mat-card-subtitle>Warning</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Please note that this service is not a full medical diagnosis or a qualified
+        medical opinion, it is for informational purposes.
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <!-- Provide a card for each of the conditions -->
+  <mat-card class="conditon-card" *ngFor="let condition of diagnosis.conditions">
+    <mat-card-header>
+      <mat-card-title>{{condition.common_name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="row" fxLayoutAlign="space-around center">
+      <div>
+        {{ condition.probability * 100 | number:'1.1-5' }}%
+      </div>
+      <mat-progress-spinner class="diagnosis-spinner" [diameter]="50" [color]="accent" [value]="condition.probability * 100 | number:'2.1-5' ">
+      </mat-progress-spinner>
+      <button mat-raised-button color="accent" (click)="navigateToCondition(condition.id)"><i class="fas fa-info-circle"></i>&nbsp;More
+        Info</button>
+    </mat-card-content>
+  </mat-card>
+</div>

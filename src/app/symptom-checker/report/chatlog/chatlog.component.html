@@ -1,0 +1,54 @@
+<div id="sc-chat-container" fxLayout="column" fxLayoutGap="10px">
+  <div *ngIf="chatlogSubject | async" fxLayout="column" fxLayoutGap="10px">
+    <h3 mat-subheader>Begin</h3>
+
+    <div *ngFor="let msg of chatlogSubject.getValue()">
+
+      <div [ngSwitch]="msg.origin">
+        <div *ngSwitchCase="'bot'">
+          <mat-card class="bot-msg">
+            <mat-card-header>
+              <i mat-card-avatar class="fas fa-notes-medical"></i>
+              <mat-card-subtitle>SymptomChecker</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                {{msg.message}}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div *ngSwitchCase="'user'">
+          <mat-card class="user-msg">
+            <mat-card-header>
+              <i mat-card-avatar class="fas fa-user"></i>
+              <mat-card-subtitle>{{intervieweeName}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                  {{msg.message}}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div *ngSwitchDefault>
+            <mat-card class="unknown-msg">
+                <mat-card-header>
+                    <i mat-card-avatar class="fas fa-exclamation-circle"></i>
+                  <mat-card-subtitle>Unknown</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        {{msg.message}}
+                        {{msg.type}}
+                        {{msg.origin}}
+                      </p>
+                </mat-card-content>
+              </mat-card>
+        </div>
+      </div>
+      
+    </div>
+    <h3 mat-subheader>End</h3>
+  </div>
+</div>

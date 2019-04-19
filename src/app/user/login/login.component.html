@@ -1,0 +1,84 @@
+<div class="login__card">
+  <div class="box-shadow" fxLayout="row" fxLayout.lt-md="column">
+    <div class="login__card--left" fxLayout.gt-md="row" fxLayout.lt-sm="column" fxFlex="100" fxFlex.gt-md="50">
+      <div class="login__card--left__content" fxFlex.lt-md="100" fxFlex.lt-sm="100">
+        <div fxLayout="row" fxLayoutAlign.lt-md="center" fxLayoutAlign.gt-md="start">
+          <img src="/assets/svg/logo.svg" />
+          <h1>DocHQ</h1>
+        </div>
+        <h2>
+          Login to manage employee sickness and healthcare services near you
+        </h2>
+        <hr class="login__card--left--hr" />
+        <div class="clear-both"> </div>
+        <mat-list>
+          <mat-list-item><i class="fas fa-circle red-dot"></i> Manage yur employee's sick leave </mat-list-item>
+          <mat-list-item><i class="fas fa-circle red-dot"></i> Check your Bradford Score</mat-list-item>
+          <mat-list-item><i class="fas fa-circle red-dot"></i> Access out symptom checker to make sure you're fighting
+            fit!</mat-list-item>
+          <mat-list-item><i class="fas fa-circle red-dot"></i> Find ways to boost employee productivity</mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+    <div class="login__card--right" fxFlexFill fxFlex="100" fxLayout.gt-md="row" fxLayout.lt-sm="column"
+         fxFlex.gt-md="50">
+      <div fxFlex.lt-md="100" fxFlex.lt-sm="100">
+        <div class="login__card--right__content">
+          <h3>ALREADY HAVE AN ACCOUNT?</h3>
+
+          <form novalidate (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+            <div class="mat-error right__content--error" *ngIf="showLoginError">
+              Incorrect email address or password.
+            </div>
+            <div class="right__content--email">
+              <mat-form-field floatLabel="never" class="input-full-width">
+                <span matPrefix><i class="fas fa-user"></i></span>
+                <input type="email" matInput placeholder="Email" maxlength="50" autocomplete="off" formControlName="email">
+                <mat-error *ngIf="loginForm.get('email').hasError('email') && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                  Please enter a valid email format e.g 'johndoe@email.com'
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="right__content--password">
+              <mat-form-field floatLabel="never" class="input-full-width">
+                <span matPrefix><i class="fas fa-lock"></i></span>
+                <input type="password" matInput placeholder="Password" maxlength="50" autocomplete="off" formControlName="password">
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-checkbox class="right__content--remember-me" fxFlex="50">
+                Remember me
+              </mat-checkbox>
+
+              <div class="right__content--forgot-password" fxFlex="50">
+                Forgot password
+              </div>
+            </div>
+
+            <div class="right__content--btn-login">
+              <button mat-button class="dochq-btn__primary" [disabled]="loginButtonDisabled">
+                Login
+              </button>
+            </div>
+          </form>
+
+          <div class="right__content--btn-sign-now">
+            <div fxFlex="50">
+              <h3 class="right__content--new-to-text">
+                New to DocHQ?
+              </h3>
+            </div>
+
+            <div fxFlex="50">
+              <button type="button" mat-button routerLink="/user/register" class="dochq-btn__basic">SIGN UP
+                NOW!</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

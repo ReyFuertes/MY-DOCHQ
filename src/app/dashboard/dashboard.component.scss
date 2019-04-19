@@ -1,0 +1,239 @@
+@import '../../style/variables';
+
+:host {
+  background-color: $bg-smoke;
+}
+
+.fa-bars {
+  font-size: 25px;
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.fa-search {
+  position: relative;
+  left: 30px;
+  color: $color-light-gray;
+}
+
+.top-nav__search--input {
+  height: 35px;
+  border-radius: 20px;
+  width: 300px;
+  background-color: $bg-smoke;
+  border: none;
+  outline: none;
+  padding-left: 37px;
+  padding-right: 25px;
+  color: $color-black;
+  font-size: 16px;
+  padding-top: 3px;
+}
+
+.download-app-store-badges {
+  height: 40px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.download-google-play-badges {
+  height: 40px;
+  cursor: pointer;
+}
+
+.dashboard__top-nav {
+  background-color: $bg-white;
+  height: 75px;
+  border-bottom: thin $border-color solid;
+  align-items: center;
+}
+
+.sidebar_container {
+  min-width: 75px;
+  background-color: $bg-white;
+}
+
+::ng-deep .mat-list-item-content {
+  flex-direction: column !important;
+}
+
+::ng-deep .mat-list-item {
+  font-size: 12px !important;
+  margin-top: 20px;
+  color: $color-green !important;
+  cursor: pointer;
+  padding: 10px 0 !important;
+  width: 100%;
+  height: 75px;
+
+  :hover {
+    background-color: $color-green !important;
+    color: $color-white;
+  }
+}
+
+::ng-deep .mat-list-item-content {
+  padding: 10px 0 !important;
+  width: 100%;
+  height: 75px !important;
+}
+
+.fa-tachometer-alt,
+.fa-user,
+.fa-cogs {
+  font-size: 28px;
+}
+
+.content-container {
+  background-color: #ddd;
+  min-height: calc(100vh - 76px);
+  padding: 40px;
+
+  h3 {
+    font-size: 28px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+.content__card--bg-green {
+  background-color: $bg-green !important;
+  color: $color-white !important;
+}
+
+.dochq-btn__primary {
+  background-color: transparent;
+  border: thin $color-green solid;
+  color: $color-green;
+  border-radius: 20px;
+  height: 40px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.content__card {
+  height: 170px;
+  border: thin $border-color solid;
+  background-color: $bg-white;
+  border-radius: 20px;
+  margin: 20px 20px 20px 0;
+  padding: 30px;
+  text-align: center;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  h2 {
+    font-size: 38px;
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-nav__search--input {
+    width: 200px;
+  }
+
+  .content-container {
+    padding: 10px;
+  }
+
+  .content__card {
+    height: auto;
+  }
+
+  .content__card-bottom {
+    h3 {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .content__card {
+    padding: 15px;
+  }
+
+  .content__card-bottom {
+    height: 110px;
+
+    h3 {
+      font-size: 16px;
+    }
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .content-container {
+    padding: 5px;
+
+    .content-container__title {
+      display: none;
+    }
+  }
+
+  ::ng-deep .mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+    line-height: 10px;
+  }
+
+  .content__card-bottom {
+    min-height: 100px;
+
+    h3 {
+      font-size: 18px;
+    }
+
+    .dochq-btn__primary {
+      height: 25px;
+    }
+  }
+
+  .content__card {
+    margin: 5px;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+
+    h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .content__card-bottom {
+    min-height: 75px;
+
+    h3 {
+      font-size: 12px;
+    }
+
+    .dochq-btn__primary {
+      font-size: 10px;
+    }
+
+    p {
+      font-size: 10px;
+    }
+  }
+}
+
+
+@media (max-width: 320px) {
+  .top-nav__search--input {
+    width: 150px;
+  }
+}

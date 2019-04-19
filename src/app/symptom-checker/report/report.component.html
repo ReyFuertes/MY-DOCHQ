@@ -1,0 +1,77 @@
+<div id="condition-container" fxLayout="row" fxLayoutAlign="center stretch" fxFlex="100%"
+  fxLayoutGap="20px" fxLayout.xs="column">
+  <div *ngIf="(reportloading$ | async)" fxLayout="column" fxFlex="100%" fxLayoutAlign="center center">
+    <h2 mat-header>Loading Symptom Checker Report...</h2>
+    <app-dochq-heart-loader></app-dochq-heart-loader>
+  </div>
+  <div id="report-container" *ngIf="!(reportloading$ | async)" fxLayout="column" fxLayoutAlign="start stretch" fxFlex="60%"
+    fxLayoutGap="20px" fxFlex.lt-sm="100%">
+    <h2 mat-header>Symptom Checker Report</h2>
+    <mat-card id="report-card" fxLayout="column" fxLayoutAlign="center">
+      <mat-card-content>
+        <h3>
+          Welcome Back {{reportSubject.getValue().name}}
+        </h3>
+        <p>
+          Please find the details of your report below:
+        </p>
+        <mat-tab-group>
+          <mat-tab dynamicHeight="true">
+            <ng-template mat-tab-label>
+              <i class="fas fa-stethoscope"></i>&nbsp;
+              Diagnosis
+            </ng-template>
+            <h2>Diagnosis Outcome</h2>
+            <ng-template matTabContent>
+              <app-diagnosis *ngIf="reportSubject | async" [interviewId]="interviewId" [diagnosis]="reportSubject.getValue().diagnosis"></app-diagnosis>
+            </ng-template>
+          </mat-tab>
+          <!--
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="fas fa-comments"></i>&nbsp;
+              Chat Log
+            </ng-template>
+            <ng-template matTabContent>
+              <h2>Transcript</h2>
+              <app-chatlog [interviewId]="interviewId" [intervieweeName]="reportSubject.getValue().name"></app-chatlog>
+            </ng-template>
+          </mat-tab>
+          -->
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="fas fa-user"></i>&nbsp;
+              User
+            </ng-template>
+            <h2>User Details</h2>
+            <ng-template matTabContent>
+              <mat-list fxLayout="column" fxLayoutAlign="space-around center">
+                <mat-list-item *ngIf="reportSubject.getValue().email_address">
+                  <i mat-list-icon class="fas fa-envelope"></i>
+                  <h4 mat-line>Email Address</h4>
+                  <p mat-line>{{reportSubject.getValue().email_address}}</p>
+                </mat-list-item>
+                <mat-list-item>
+                  <i mat-list-icon class="far fa-calendar-alt"></i>
+                  <h4 mat-line>Date of Check</h4>
+                  <p mat-line>{{reportSubject.getValue().createdAt | date}}</p>
+                </mat-list-item>
+                <mat-list-item>
+
+                  <h4 mat-line>Sex</h4>
+                  <i mat-list-icon class="fas fa-venus-mars"></i>
+                  <p mat-line>{{reportSubject.getValue().sex}}</p>
+                </mat-list-item>
+                <mat-list-item>
+                  <i mat-list-icon class="far fa-calendar"></i>
+                  <h4 mat-line>Age</h4>
+                  <p mat-line>{{reportSubject.getValue().age}}</p>
+                </mat-list-item>
+              </mat-list>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

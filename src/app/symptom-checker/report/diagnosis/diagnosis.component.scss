@@ -1,0 +1,12 @@
+@import "../../../../style/variables";
+.conditon-card {
+    background-color: mat-color($app-primary, 100);
+}
+
+.no-conditon-card {
+    background-color: mat-color($app-warn, 200);
+}
+
+.disclaimer-card {
+    background-color: mat-color($app-warn, 100);
+}

@@ -1,0 +1,42 @@
+<div fxFlex="100" fxLayout="row" fxLayoutAlign="space-around center" class="bradford-container">
+  <div class="bradford-container__date-range">
+    <h3>Effective report period:</h3>
+    <div>
+      <span class="from">From: </span>
+      <mat-form-field floatLabel="never">
+        <input matInput [matDatepicker]="pickerFrom" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFrom></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <span class="to">To:</span>
+      <mat-form-field floatLabel="never">
+        <input matInput [matDatepicker]="pickerTo" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+        <mat-datepicker #pickerTo></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div>
+    <h3>Department:</h3>
+    <div>
+      <mat-form-field>
+        <mat-label>Accounting</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let a of accounting" [value]="a.value">
+            {{a.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div>
+    <h3>Bradford score:</h3>
+    <div>
+      <mat-form-field floatLabel="never">
+        <input matInput placeholder="Score" value="75">
+      </mat-form-field>
+    </div>
+  </div>
+</div>

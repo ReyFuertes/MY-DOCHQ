@@ -1,0 +1,19 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100%" fxLayoutGap="20px">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let section of content" [expanded]="">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{section.text? section.text : 'Overview'}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent *ngFor="let paragraph of section.mainEntityOfPage">
+        <div [innerHTML]="paragraph.text"></div>
+      </ng-template>
+      <mat-action-row *ngIf="author[0]">
+        <a href="{{author[0].url}}">
+          <img class="nhs-logo" src="{{author[0].logo}}">
+        </a>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

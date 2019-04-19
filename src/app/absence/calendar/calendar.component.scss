@@ -1,0 +1,154 @@
+@import '../../../style/variables';
+
+:host {
+  width: 100%;
+}
+
+::ng-deep .cal-month-view .cal-header .cal-cell {
+  background-color: $bg-red !important;
+  color: $color-white !important;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row !important;
+  padding: 10px 20px;
+}
+
+.cursor-p {
+  cursor: pointer;
+  margin-right: 20px;
+  color: $color-gray;
+
+  &.active {
+    color: $color-black;
+  }
+}
+
+.cal__nav--view-text {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.cal__nav--action {
+  margin: 0 30px;
+}
+
+::ng-deep .fa-times, ::ng-deep .fa-fw {
+  color: $color-black !important;
+}
+
+::ng-deep .cal-week-view .cal-event {
+  color: $color-black !important;
+}
+
+::ng-deep .cal-month-view .cal-cell {
+  &:first-child {
+    border-radius: 4px 0 0 0 !important;
+  }
+
+  &:last-child {
+    border-radius: 0 4px 0 0 !important;
+  }
+}
+
+::ng-deep .cal-month-view .cal-cell-row .cal-cell:hover,
+.cal-month-view .cal-cell.cal-has-events.cal-open {
+  background-color: $bg-red;
+}
+
+::ng-deep .cal-month-view .cal-cell-row .cal-cell:hover,
+.cal-month-view .cal-cell.cal-has-events.cal-open {
+  color: $color-white;
+}
+
+::ng-deep .cal-month-view .cal-cell-row .cal-cell:hover,
+.cal-month-view .cal-cell.cal-has-events.cal-open {
+  background-color: transparent;
+  color: $color-green;
+}
+
+::ng-deep .cal-month-view .cal-day-cell.cal-today {
+  background-color: transparent;
+  color: $color-dark-green;
+}
+
+@media (max-width: 870px) {
+  .cursor-p {
+    margin: 0 15px;
+  }
+
+  .cal__nav--view-text {
+    display: none;
+  }
+
+  .fa-th {
+    font-size: 28px;
+  }
+
+  .fa-list {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cal__nav--action {
+    margin: 0 5px;
+    font-size: 13px;
+  }
+
+  .cal__nav--view-text {
+    display: none;
+  }
+
+  .fa-th {
+    font-size: 24px;
+  }
+
+  .fa-list {
+    font-size: 27px;
+  }
+
+  ::ng-deep .cal-month-view .cal-days .cal-cell-row {
+    height: 50px;
+  }
+
+  ::ng-deep .cal-month-view .cal-day-cell.cal-today .cal-day-number {
+    font-size: 14px;
+  }
+
+  ::ng-deep .cal-month-view .cal-day-badge {
+    display: none;
+  }
+
+  ::ng-deep .cal-month-view .cal-day-number {
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 414px) {
+  .cal__nav-date--title {
+    h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+  }
+
+  .cursor-p {
+    margin: 0 10px;
+  }
+
+  .fa-chevron-left,
+  .fa-chevron-right {
+    margin: 0;
+  }
+
+  .fa-th {
+    font-size: 18px;
+  }
+
+  .fa-list {
+    font-size: 18px;
+  }
+}

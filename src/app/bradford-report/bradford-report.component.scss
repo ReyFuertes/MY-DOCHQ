@@ -1,0 +1,20 @@
+@import '../../style/variables';
+
+.bradford-container {
+  background-color: $color-white;
+  border-radius: 4px;
+
+  h3 {
+    font-weight: 600;
+  }
+}
+
+.bradford-container__date-range {
+  span.from, span.to {
+    margin-right: 10px;
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+    display: inline-block;
+  }
+}

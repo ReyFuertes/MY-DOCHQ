@@ -1,0 +1,294 @@
+<mat-horizontal-stepper class="onboarding-medical-questionnaire" [linear]="'true'" #stepper>
+  <!-- Introduction -->
+  <mat-step class="step" [stepControl]="introFormGroup">
+    <form [formGroup]="introFormGroup">
+      <ng-template matStepLabel>Introduction</ng-template>
+      <mat-card>
+        <div class="step__content">
+          <div class="text">To fill out this form you will need to have the following available:</div>
+          <ul class="step__ul subtext">
+              <li>- Recent photograph</li>
+              <li>- Knowledge of allergies</li>
+              <li>- Knowledge of current medication</li>
+          </ul>
+        </div>
+        <div class="step__content">
+          <div class="text">One of the following photocopies in a digital image format:</div>
+          <ul class="step__ul subtext">
+              <li>- Passport</li>
+              <li>- Driving License</li>
+          </ul>
+        </div>
+        <div class="step__content">
+          <div class="text">This form should take approximately 10-15 minutes</div>
+        </div>
+      </mat-card>
+      <div fxLayoutAlign.lt-sm="center">
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Personal Details -->
+  <mat-step class="step" [stepControl]="personalDetailsFormGroup">
+    <form [formGroup]="personalDetailsFormGroup">
+      <ng-template matStepLabel>Personal Details</ng-template>
+      <mat-card>
+        <div class="step__section-title">Personal Details</div>
+        <div>
+          <div class="text">Please fill in the following personal details:</div>
+        </div>
+        <mat-list fxLayout="column" class="list">
+          <mat-list-item class="list__list-item">
+            <mat-form-field fxFlex="25%" fxFlex.lt-sm="100%">
+                <input matInput placeholder="First Name" formControlName="firstName" autocomplete="off" required>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item class="list__list-item">
+            <mat-form-field fxFlex="25%" fxFlex.lt-sm="100%">
+              <input matInput placeholder="Last Name" formControlName="lastName" autocomplete="off" required>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item class="list__list-item">
+            <mat-form-field fxFlex="25%" fxFlex.lt-sm="100%">
+              <input matInput type="email" placeholder="Email" formControlName="email" autocomplete="off" required>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item class="list__list-item">
+            <mat-form-field fxFlex="25%" fxFlex.lt-sm="100%">
+              <input matInput placeholder="Contact Number" formControlName="phone" autocomplete="off" required>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item class="list__list-item">
+            <mat-form-field fxFlex="25%" fxFlex.lt-sm="100%">
+              <input matInput [matDatepicker]="birthdatePicker" placeholder="Date of Birth" autocomplete="off" formControlName="dateOfBirth" required>
+              <mat-datepicker-toggle matSuffix [for]="birthdatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #birthdatePicker></mat-datepicker>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item class="list__list-item">
+            <mat-form-field fxFlex="25%" fxFlex.lt-sm="100%">
+              <input matInput placeholder="Job Title" formControlName="jobTitle" autocomplete="off" required>
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+      <div fxLayoutAlign.lt-sm="center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Identification -->
+  <mat-step class="step" [stepControl]="identificationFormGroup">
+    <form [formGroup]="identificationFormGroup">
+      <ng-template matStepLabel>Identification</ng-template>
+      <mat-card>
+        <div class="step__section-title">Personal Identification</div>
+        <div class="file-upload">
+          <div class="text">Please upload a photo of yourself that was taken within the last three months</div>
+          <input class="file-upload__filepicker" id="userPhoto" multiple type="file" formControlName="userPhoto" (change)="updateFile($event, 'userPhotoFilename')"/>
+          <label for="userPhoto" class="file-upload__label mat-button">Select...</label>
+          <div class="file-upload__filename">{{userPhotoFilename}}</div>
+        </div>
+        <div class="file-upload">
+          <div class="text">Please upload an image of your identification (Driving License OR Passport )</div>
+          <input class="file-upload__filepicker" id="idCardPhoto" multiple type="file" formControlName="idCardPhoto" (change)="updateFile($event, 'idCardPhotoFilename')"/>
+          <label for="idCardPhoto" class="file-upload__label mat-button">Select...</label>
+          <div class="file-upload__filename">{{idCardPhotoFilename}}</div>
+        </div>
+      </mat-card>
+      <div fxLayoutAlign.lt-sm="center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Medical History -->
+  <mat-step class="step" [stepControl]="medicalHistoryFormGroup">
+    <form [formGroup]="medicalHistoryFormGroup">
+      <ng-template matStepLabel>Medical History</ng-template>
+      <mat-card>
+        <div fxLayout="column">
+          <div class="step__section-title">Personal History</div>
+          <div>
+            <div class="text">Please check any conditions that apply to you:</div>
+          </div>
+          <div *ngFor="let n of medicalHistoryArr; let i = index" formArrayName="personalHistory">
+            <mat-checkbox (change)="updateCheckboxArray(n.value, $event.checked, 'personalHistory', 'medicalHistoryFormGroup')" value="n.value">{{n.description}}</mat-checkbox>
+          </div>
+          <div fxLayout="row">
+            <mat-form-field fxFlex="50%" fxFlex.lt-sm="100%">
+              <textarea matInput placeholder="Please list any other relevant medical history" formControlName="otherPersonalHistory" maxlength="1000"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="column">
+          <div class="step__section-title">Family History</div>
+          <div>
+            <div class="text">Please check any hereditary conditions that apply to you:</div>
+          </div>
+          <div *ngFor="let n of medicalHistoryArr; let i = index" formArrayName="familyHistory">
+            <mat-checkbox (change)="updateCheckboxArray(n.value, $event.checked, 'familyHistory', 'medicalHistoryFormGroup')" value="n.value">{{n.description}}</mat-checkbox>
+          </div>
+          <div fxLayout="row">
+            <mat-form-field fxFlex="50%" fxFlex.lt-sm="100%">
+              <textarea matInput placeholder="Please list any other relevant family medical history" formControlName="otherFamilyHistory" maxlength="1000"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+      <div fxLayoutAlign.lt-sm="center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Medication -->
+  <mat-step class="step" [stepControl]="medicationFormGroup">
+    <form [formGroup]="medicationFormGroup">
+      <ng-template matStepLabel>Medication</ng-template>
+      <mat-card>
+        <div fxLayout="column">
+          <div class="step__section-title">Prescibed Medication</div>
+          <div>
+            <div class="text">Are you currently taking any prescribed medication?</div>
+          </div>
+          <div fxLayout="row">
+            <mat-form-field fxFlex="50%" fxFlex.lt-sm="100%">
+              <textarea matInput placeholder="Please list any prescribed medication" formControlName="prescribedMedication" maxlength="1000"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="column">
+          <div class="step__section-title">Non-Prescribed Medication</div>
+          <div>
+            <div class="text">Are you currently taking any non-prescribed medication?</div>
+            <div class="subtext">This includes vitamin supplements or herbal treatments that you are taking</div>
+          </div>
+          <div fxLayout="row">
+            <mat-form-field fxFlex="50%" fxFlex.lt-sm="100%">
+              <textarea matInput placeholder="Please list any non-prescribed medication" formControlName="nonPrescribedMedication" maxlength="1000"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+      <div fxLayoutAlign.lt-sm="center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Life Style -->
+  <mat-step class="step" [stepControl]="lifeStyleFormGroup">
+    <form [formGroup]="lifeStyleFormGroup">
+      <ng-template matStepLabel>Lifestyle</ng-template>
+      <mat-card>
+        <div fxLayout="column">
+          <div class="step__section-title">Lifestyle</div>
+          <div>
+            <div class="text">Do you smoke?</div>
+          </div>
+          <mat-radio-group formControlName="isSmoke">
+            <mat-radio-button value="true">Yes</mat-radio-button>
+            <mat-radio-button value="false">No</mat-radio-button>
+          </mat-radio-group>
+          <div>
+            <div class="text">Do you have any allergies?</div>
+          </div>
+          <div fxLayout="row">
+            <mat-form-field fxFlex="50%" fxFlex.lt-sm="100%">
+              <textarea matInput placeholder="Please list any allergies" formControlName="allergies" maxlength="1000"></textarea>
+            </mat-form-field>
+          </div>
+          <div>
+            <div class="text">On a scale of 1 to 5, how active are you on average?</div>
+            <div class="subtext">(1 = inactive, 5 = very active)</div>
+          </div>
+          <mat-radio-group formControlName="activeRating">
+            <mat-radio-button value="1">1</mat-radio-button>
+            <mat-radio-button value="2">2</mat-radio-button>
+            <mat-radio-button value="3">3</mat-radio-button>
+            <mat-radio-button value="4">4</mat-radio-button>
+            <mat-radio-button value="5">5</mat-radio-button>
+          </mat-radio-group>
+          <div>
+            <div class="text">On a scale of 1 to 5, how stressed are you on average?</div>
+            <div class="subtext">(1 = not stressed, 5 = very stressed)</div>
+          </div>
+          <mat-radio-group formControlName="stressRating">
+            <mat-radio-button value="1">1</mat-radio-button>
+            <mat-radio-button value="2">2</mat-radio-button>
+            <mat-radio-button value="3">3</mat-radio-button>
+            <mat-radio-button value="4">4</mat-radio-button>
+            <mat-radio-button value="5">5</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-card>
+      <div fxLayoutAlign.lt-sm="center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Communication Preferences -->
+  <mat-step class="step" [stepControl]="commPreferencesFormGroup">
+    <form [formGroup]="commPreferencesFormGroup">
+      <ng-template matStepLabel>Communication Preferences</ng-template>
+      <mat-card>
+        <div fxLayout="column">
+          <div class="step__section-title">Communication Preferences</div>
+          <div>
+            <div class="text">How would you like to receive communication from DocHQ?</div>
+          </div>
+          <div *ngFor="let n of commPreferencesArr; let i = index" formArrayName="communicationPreferences">
+            <mat-checkbox (change)="updateCheckboxArray(n.value, $event.checked, 'communicationPreferences', 'commPreferencesFormGroup')" value="n.value">{{n.description}}</mat-checkbox>
+          </div>
+        </div>
+      </mat-card>
+      <div fxLayoutAlign.lt-sm="center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Important Information -->
+  <mat-step class="step" [stepControl]="imptInfoFormGroup">
+    <form [formGroup]="imptInfoFormGroup">
+      <ng-template matStepLabel>Submission</ng-template>
+      <mat-card>
+        <div fxLayout="column">
+          <div class="step__section-title">Important Information</div>
+          <div class="step__content">
+            <div>
+              <div class="text">Please review our Privacy Policy:</div>
+            </div>
+            <div fxLayout="row">
+              <div class="mat-button" (click)="openWindow('https://www.dochq.co.uk/privacy-policy.html')" fxFlex="25%" fxFlex.lt-sm="100%">Privacy Policy&nbsp;&nbsp;<i class="fas fa-chevron-right"></i></div>
+            </div>
+          </div>
+          <div class="step__content">
+            <div>
+              <div class="text">Please review our Terms and Conditions:</div>
+            </div>
+            <div fxLayout="row">
+              <div class="mat-button" (click)="openWindow('https://dochq.co.uk/terms-and-conditions.html')" fxFlex="25%" fxFlex.lt-sm="100%">Terms and Conditions&nbsp;&nbsp;<i class="fas fa-chevron-right"></i></div>
+            </div>
+          </div>
+          <div>
+            <div class="text">Do you agree to DocHQ's policies?</div>
+          </div>
+          <mat-checkbox formControlName="subscribeToPromos">
+            I would like to be kept up to date with updates and promotions
+          </mat-checkbox>
+          <mat-checkbox formControlName="agreedToTermsAndConditions" required>
+            I agree to DocHQ’s Privacy Policy and the Terms and Conditions*
+          </mat-checkbox>
+          <div class="mat-error" *ngIf="showTermsError">Please agree to DocHQ’s Privacy Policy and the Terms and Conditions to proceed.</div>
+        </div>
+      </mat-card>
+      <div fxLayoutAlign="center">
+        <button mat-button (click)="submit()" class="submit-button">Submit</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

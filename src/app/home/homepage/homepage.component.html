@@ -1,0 +1,133 @@
+<div class="homepage">
+  <div class="homepage__header" fxLayout="column" fxLayoutAlign="space-around center">
+    <h1>Hi, Georgia</h1>
+    <p>What would you like to do today?</p>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-evenly center" class="homepage__box--container">
+    <div (click)="selectCard(1)" class="homepage__box" [ngClass]="{'active': getSelectedCard() == 1}">
+      <span class="title">Sickness Management</span>
+      <img src="/assets/svg/{{ getSelectedCard() == 1 ? 'active-': '' }}sickness.svg" />
+    </div>
+    <div (click)="selectCard(2)" class="homepage__box" [ngClass]="{'active': getSelectedCard() == 2}">
+      <span class="title">Wellbeing</span>
+      <img src="/assets/svg/{{ getSelectedCard() == 2 ? 'active-': '' }}wellbeing.svg" />
+    </div>
+  </div>
+
+  <!-- Sickness Management content -->
+  <div *ngIf="getSelectedCard() == 1">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="homepage__box--container">
+      <div class="homepage__box homepage__box--bg-white">
+        <h1 class="title">Upload Employee Details</h1>
+        <div class="content" fxLayout="column" fxLayout.gt-sm="row">
+          <div fxFlex="100" fxFlex.gt-sm="70">
+            <mat-list>
+              <mat-list-item><i class="fas fa-circle"></i> Upload a CSV of your employees and their details
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="30">
+            <button mat-button class="dochq-btn__primary" (click)="onUpload()">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="homepage__box--container">
+      <div class="homepage__box homepage__box--bg-white">
+        <div class="content" fxLayout="column" fxLayout.gt-sm="row">
+          <div fxFlex="100" fxFlex.gt-sm="70">
+            <mat-list>
+              <mat-list-item><i class="fas fa-circle"></i>Click here to see the template we need</mat-list-item>
+            </mat-list>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="30">
+            <button mat-button class="dochq-btn__primary" (click)="onTemplateExample()">SEE EXAMPLE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wellbeing content -->
+  <div *ngIf="getSelectedCard() == 2">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="homepage__box--container">
+      <div class="homepage__box homepage__box--bg-white">
+        <h1 class="title">Mind Q-mental wellbeing solution</h1>
+        <div class="content" fxLayout="column" fxLayout.gt-sm="row">
+          <div fxFlex="100" fxFlex.gt-sm="70">
+            <mat-list>
+              <mat-list-item><i class="fas fa-circle"></i> Identify the emotional health and resilience of your
+                employees
+              </mat-list-item>
+              <mat-list-item><i class="fas fa-circle"></i> Employees can learn about their strenghts and weaknesses
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="30">
+            <button mat-button class="dochq-btn__primary" (click)="openDialog()">VIEW MORE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="homepage__box--container">
+      <div class="homepage__box homepage__box--bg-white">
+        <h1 class="title">HR Advice</h1>
+        <div class="content" fxLayout="column" fxLayout.gt-sm="row">
+          <div fxFlex="100" fxFlex.gt-sm="70">
+            <mat-list>
+              <mat-list-item><i class="fas fa-circle"></i> Read about how to boost employee productivity
+              </mat-list-item>
+              <mat-list-item><i class="fas fa-circle"></i> Find out how to reduce sickness and stress in the workplace
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="30">
+            <button mat-button class="dochq-btn__primary">READ MORE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-evenly center" class="homepage__box--container">
+    <div (click)="selectCard(3)" class="homepage__box" [ngClass]="{'active': getSelectedCard() == 3}">
+      <span class="title">Your Health</span>
+      <img src="/assets/svg/{{ getSelectedCard() == 3 ? 'active-': '' }}your-health.svg" />
+    </div>
+    <div class="homepage__box box-no-fill">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <img class="logo" src="/assets/svg/logo.svg" />
+        <h1 class="logo-title">DocHQ</h1>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="getSelectedCard() == 3">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="homepage__box--container">
+      <div class="homepage__box homepage__box--bg-black">
+        <h1 class="title">Download our app Now!</h1>
+        <div class="content" fxFlexFill fxLayout="column" fxLayout.gt-sm="row">
+          <div fxFlex="100" fxFlexFill fxFlex.gt-sm="70">
+            <mat-list>
+              <mat-list-item><i class="fas fa-circle"></i>Lorem Ipsum is simply dummy text of the printing and
+                typesetting
+                industry.
+              </mat-list-item>
+              <mat-list-item><i class="fas fa-circle"></i>Lorem Ipsum is simply dummy text of the printing and
+                typesetting
+                industry.
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div fxFlex="100" fxLayout="column" fxLayoutAlign="center" fxFlex.gt-sm="30">
+
+            <img class="download-app-store-badges" src="/assets/svg/app-store-badge.svg">
+            <img class="download-google-play-badges" src="/assets/img/logo/google-play-badge.png">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

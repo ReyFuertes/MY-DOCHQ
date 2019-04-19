@@ -1,0 +1,11 @@
+@import "~@angular/material/_theming.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+
+@import './style/theme.scss';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif;  }
+
+h1 {
+  font-size: 42px;
+}

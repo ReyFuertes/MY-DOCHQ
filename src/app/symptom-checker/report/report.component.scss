@@ -1,0 +1,7 @@
+#report-card {
+    margin-bottom: 2.5%;
+    @media screen and (max-width: 600px) {
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+}

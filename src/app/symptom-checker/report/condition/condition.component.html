@@ -1,0 +1,66 @@
+<div id="condition-container" fxLayout="row" fxLayoutAlign="center stretch" fxFlex="100%" fxLayoutGap="20px"
+  fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start stretch" fxFlexFill>
+  <div *ngIf="(conditionloading$ | async)" fxLayout="column" fxFlex="100%" fxLayoutAlign="center center">
+    <h2 mat-header>Loading Condition...</h2>
+    <app-dochq-heart-loader></app-dochq-heart-loader>
+  </div>
+  <div *ngIf="!(conditionloading$ | async)" fxLayout="column" fxLayoutAlign="start stretch" fxFlex="40%" fxLayoutGap="20px"
+  fxFlex.lt-sm="100%">
+    <div>
+      <h2 mat-header>Condition</h2>
+    </div>
+    <mat-card id="condition-card">
+      <mat-card-header>
+        <div mat-card-avatar><i class="fas fa-pills"></i></div>
+        <mat-card-title>{{conditionSubject.getValue().name}}</mat-card-title>
+        <mat-card-subtitle *ngIf="showCommonName()">Commonly known as: <strong>{{conditionSubject.getValue().common_name}}</strong></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="conditionSubject.getValue().description">
+          <h3 mat-header>Description</h3>
+          <p>
+            {{conditionSubject.getValue().description}}
+          </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <div fxLayout="column" *ngIf="conditionSubject.getValue().mainEntityOfPage">
+      <h2 mat-header> NHS Information <span [innerHTML]="conditionSubject.getValue().interactionStatistic[0].interactionService.url"></span></h2>
+      <app-nhs-content [content]="conditionSubject.getValue().mainEntityOfPage" [author]="conditionSubject.getValue().author"></app-nhs-content>
+    </div>
+    <div>
+      <h3 mat-header>Further Details</h3>
+    </div>
+    <div id="further-details-container">
+      <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px" fxLayout.lt-md="column">
+        <div fxLayout="column" fxLayoutGap="10px" fxFlex="100%">
+          <app-severity *ngIf="conditionSubject.getValue().severity" [severity]="conditionSubject.getValue().severity"></app-severity>
+          <app-prevalence *ngIf="conditionSubject.getValue().prevalence" [prevalence]="conditionSubject.getValue().prevalence"></app-prevalence>
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px" fxFlex="100%">
+          <app-acuteness *ngIf="conditionSubject.getValue().acuteness" [acuteness]="conditionSubject.getValue().acuteness"></app-acuteness>
+          <app-triage *ngIf="conditionSubject.getValue().triage_level" [triage_level]="conditionSubject.getValue().triage_level"></app-triage>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button color="primary" *ngIf="interviewId" (click)="navigateToReport()" mat-raised-button><i class="fas fa-long-arrow-alt-left"></i>&nbsp;Back
+        to Report
+      </button>
+    </div>
+  </div>
+  <div *ngIf="!(conditionloading$ | async)" fxLayout="column" fxLayoutAlign="start stretch" fxFlex="15%" fxLayoutGap="20px">
+    <div *ngIf="conditionSubject.getValue().categories && conditionSubject.getValue().categories.length > 0">
+      <h4 mat-header>Categories</h4>
+      <mat-chip-list>
+        <mat-chip selectable="false" disabled color="accent" selected *ngFor="let category of conditionSubject.getValue().categories">{{category}}</mat-chip>
+      </mat-chip-list>
+    </div>
+    <div *ngIf="conditionSubject.getValue().keywords && conditionSubject.getValue().keywords.length > 0">
+      <h4 mat-header>Keywords</h4>
+      <mat-chip-list>
+        <mat-chip selectable="false" disabled color="accent" selected *ngFor="let keyword of conditionSubject.getValue().keywords">{{keyword}}</mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+</div>

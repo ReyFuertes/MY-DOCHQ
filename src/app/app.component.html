@@ -1,0 +1,93 @@
+<div class="app-container" *ngIf="(appLoading$ | async)" fxFlex="100%" fxLayoutAlign="center center">
+    <h2 mat-header>Loading DocHQ...</h2>
+    <app-dochq-heart-loader></app-dochq-heart-loader>
+</div>
+<div *ngIf="!(appLoading$ | async)" class="app-container" [class.app-is-mobile]="mobileQuery.matches" fxLayout="column"
+  fxLayoutAlign=" none">
+  <!-- <mat-toolbar class="app-toolbar">
+    <button *ngIf="loggedInSubject.getValue()" mat-icon-button (click)="snav.toggle()">
+      <mat-icon aria-label="side navigation icon">menu</mat-icon>
+    </button>
+    <h1 class="app-app-name"><img src="../assets/img/logo/logo.png"></h1>
+  </mat-toolbar> -->
+  <mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+    <mat-sidenav #snav class="sidenav" [hidden]="loggedInSubject.getValue()" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <button mat-button class="mat-expansion-panel-header" [routerLink]="['dashboard']">Dashboard</button>
+      <a mat-button class="mat-expansion-panel-header" [routerLink]="['symptomchecker']">Symptom Checker</a>
+      <mat-accordion [displayMode]="flat">
+        <!-- My DocHQ -->
+        <mat-expansion-panel class="no-shadow" >
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>My DocHQ</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="margin-left-0" dense>
+            <mat-list-item><a href="#">Profile</a></mat-list-item>
+            <mat-list-item><a href="#">Package Manager</a></mat-list-item>
+            <mat-list-item><a href="#">Payment</a></mat-list-item>
+            <mat-list-item><a href="#">Registered practice</a></mat-list-item>
+            <mat-list-item><a href="#">Medical History</a></mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <!-- Appointments -->
+        <mat-expansion-panel class="no-shadow" >
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>Appointments</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="margin-left-0" dense>
+            <mat-list-item><a href="#">Book</a></mat-list-item>
+            <mat-list-item><a href="#">History</a></mat-list-item>
+            <mat-list-item><a href="#">Reports</a></mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <!-- Business -->
+        <mat-expansion-panel class="no-shadow" >
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>Business</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="margin-left-0" dense>
+            <mat-list-item><a href="#">Details</a></mat-list-item>
+            <mat-list-item><a href="#">Employees list</a></mat-list-item>
+            <mat-list-item><a href="#">Invoices</a></mat-list-item>
+            <mat-list-item><a href="#">Management information</a></mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <!-- Admin Panel -->
+        <mat-expansion-panel class="no-shadow" >
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>Admin</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="margin-left-0" dense>
+            <mat-list-item><a [routerLink]="['user/list']">User Management</a></mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <!-- Settings -->
+        <mat-expansion-panel class="no-shadow" >
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>Settings</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="margin-left-0" dense>
+            <mat-list-item><a href="#">System Check</a></mat-list-item>
+            <mat-list-item><a href="#">Preferences</a></mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <!-- Legal -->
+        <mat-expansion-panel class="no-shadow" >
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>Legal</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list class="margin-left-0" dense>
+              <mat-list-item><a href="#">About us</a></mat-list-item>
+              <mat-list-item><a href="#">Terms and Conditions</a></mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+        <button mat-button class="mat-expansion-panel-header" (click)="logout()">Logout</button>
+      </mat-accordion>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <app-message></app-message>
+</div>

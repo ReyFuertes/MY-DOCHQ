@@ -1,0 +1,23 @@
+@import "../../../style/variables";
+#user-list-container {
+    margin-top: 2vh;
+}
+
+table {
+    width: 100%;
+    .mat-row:hover {
+        background: mat-color($app-primary, 100);
+    }
+}
+
+.highlight {
+    background: mat-color($app-accent, lighter);
+}
+
+#user-search-container{
+    background-color: mat-color($app-primary, 300); 
+}
+
+#user-none-found {
+    background-color: mat-color($app-warn, 200); 
+}
