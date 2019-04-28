@@ -1,5 +1,5 @@
 <div class="cal__nav" fxLayout="row" fxFlexAlign="space-around center">
-  <div fxFlex="25" fxLayoutAlign="center center">
+  <div fxFlex="25" fxLayoutAlign="start center">
     <i class="fas fa-chevron-left"></i>
     <span class="cal__nav--action" mwlCalendarToday [(viewDate)]="viewDate">
       Today
@@ -9,7 +9,7 @@
   <div class="cal__nav-date--title" fxFlex="50" fxLayoutAlign="center center">
     <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
   </div>
-  <div fxFlex="25" fxLayoutAlign="center center">
+  <div fxFlex="25" fxLayoutAlign="end center">
     <span class="cursor-p" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
       <i class="fas fa-th"></i> <span class="cal__nav--view-text">Month</span>
     </span>

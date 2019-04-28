@@ -1,5 +1,5 @@
 /** Libraries */
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
 
@@ -7,6 +7,7 @@ import { Breakpoints, BreakpointState, BreakpointObserver } from '@angular/cdk/l
 import { fadeInAnimation } from '../animations/fade-in-animation';
 import { slideInOutAnimation } from '../animations/slide-out-animation';
 import { animate } from '@angular/animations';
+import { LocalStorageService } from '../global/local-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,7 @@ import { animate } from '@angular/animations';
   styleUrls: ['./dashboard.component.scss'],
   animations: [fadeInAnimation]
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
   /** needed to bind the fade in animation */
   @HostBinding('@fadeInAnimation') animate: string;
@@ -40,5 +41,31 @@ export class DashboardComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  public selectCard(selectedCard: any): void {
+    localStorage.setItem('selected_dashboard_card', JSON.stringify(selectedCard))
+  }
+
+  public getSelectedCard(): any {
+    return this.localStorageService.getString('selected_dashboard_card')
+      ? this.localStorageService.getString('selected_dashboard_card')
+      : this.selectCard(1);
+  }
+
+  public getSidebarMenu(): any {
+    return this.localStorageService.getString('sidebar_menu')
+      ? this.localStorageService.getString('sidebar_menu')
+      : this.selectCard(1);
+  }
+
+  constructor(private localStorageService: LocalStorageService, private breakpointObserver: BreakpointObserver) {
+
+  }
+
+  public selectMenu(index: number): void {
+    localStorage.setItem('sidebar_menu', JSON.stringify(index));
+  }
+
+  ngOnInit(): void {
+    this.selectMenu(1);
+  }
 }

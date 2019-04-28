@@ -23,7 +23,7 @@
   border: thin #CCC solid;
   margin: 10px;
   border-radius: 15px;
-  background-color: $bg-green;
+  background-color: $color-green;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -31,7 +31,7 @@
   text-align: center;
 
   &.active {
-    background-color: $bg-white;
+    background-color: $color-white;
 
     .title {
       font-size: 26px;
@@ -95,7 +95,7 @@
 }
 
 .dochq-btn__primary {
-  background-color: $bg-green;
+  background-color: $color-green;
   color: $color-white;
   border-radius: 20px;
   height: 40px;
@@ -105,7 +105,7 @@
 }
 
 .homepage__box--bg-white {
-  background-color: $bg-white;
+  background-color: $color-white;
 
   h1.title {
     color: $color-black;
@@ -113,7 +113,7 @@
 }
 
 .homepage__box--bg-black {
-  background-color: $bg-pale-black;
+  background-color: $color-pale-black;
 
   h1.title {
     color: $color-white;

@@ -3,18 +3,244 @@
 .bradford-container {
   background-color: $color-white;
   border-radius: 4px;
+  padding: 20px 40px;
 
   h3 {
     font-weight: 600;
+    margin-bottom: 10px;
   }
 }
 
+.bradford-container__dept {
+  flex: 1 1 30%;
+}
+
+.bradford-container__score {
+  flex: 1 1 30%;
+}
+
 .bradford-container__date-range {
-  span.from, span.to {
+  flex: 1 1 30%;
+
+  span.from,
+  span.to {
     margin-right: 10px;
     width: 50px;
     min-width: 50px;
     max-width: 50px;
     display: inline-block;
+  }
+}
+
+.bradford-container--table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr {
+    th {
+      padding: 10px;
+      text-align: left;
+      background-color: $color-white;
+      width: 25%;
+    }
+  }
+
+  tr {
+    td {
+      padding: 10px;
+      text-align: left;
+      width: 25%;
+    }
+  }
+}
+
+.table-content__container {
+  height: 400px;
+  overflow-y: scroll;
+  padding: 0;
+
+  table {
+    width: 100%;
+
+    tr {
+      &:nth-child(odd) {
+        background-color: $color-smoke;
+      }
+    }
+  }
+}
+
+.dochq-btn__primary {
+  background-color: $color-green;
+  border: thin $color-green solid;
+  color: $color-white;
+  border-radius: 20px;
+  height: 40px;
+  width: 170px;
+  margin-top: 10px;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+::ng-deep .mat-select-arrow-wrapper {
+  padding-right: 5px;
+}
+
+::ng-deep .mat-select-value-text {
+  padding-left: 10px !important;
+}
+
+::ng-deep input.mat-input-element {
+  padding-left: 10px !important;
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+  color: $color-green;
+}
+
+::ng-deep .mat-form-field-flex {
+  border: thin #CCC solid;
+  border-radius: 4px;
+}
+
+::ng-deep .mat-form-field-infix {
+  border-top: none;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-label-wrapper {
+  left: 7px !important;
+}
+
+.atm-container::-webkit-scrollbar,
+.ui-multiselect-items-wrapper::-webkit-scrollbar,
+.ui-dialog-content.ui-widget-content::-webkit-scrollbar {
+  width: 5px;
+  margin: 5px;
+  height: 8px;
+}
+
+/* Track */
+.table-content__container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #e5f5ff;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+/* Handle */
+.table-content__container::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: $color-light-gray;
+  -webkit-box-shadow: inset 0 0 6px $color-light-gray;
+}
+
+.table-content__container::-webkit-scrollbar-thumb:window-inactive {
+  background: $color-light-gray;
+}
+
+.table-content__container::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 0;
+  background: $color-light-gray;
+  -webkit-box-shadow: inset 0 0 6px $color-gray;
+}
+
+.table-content__container::-webkit-scrollbar-thumb:window-inactive {
+  background: $color-gray;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+.warning-scale-container {
+  background-color: $color-white;
+  border-radius: 4px;
+  padding: 20px 40px;
+  margin-top: 40px;
+
+  h3 {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+}
+
+.warning-scale--table {
+  border-collapse: collapse;
+  font-size: 13px;
+
+  tr {
+    &:nth-child(even) {
+      background: #fbfbfb;
+    }
+
+    td {
+      min-width: 100%;
+      padding: 20px;
+
+      &:first-child {
+        max-width: 150px;
+        min-width: 150px;
+        text-align: center;
+      }
+
+      &:nth-child(2) {
+        max-width: 150px;
+        min-width: 150px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.warning-scale--bg-g {
+  background-color: #099f45;
+  color: $color-white;
+}
+
+.warning-scale--bg-y {
+  background-color: #eae100;
+}
+
+.warning-scale--bg-o {
+  background-color: #ff4500;
+  color: $color-white;
+}
+
+.warning-scale--bg-r {
+  background-color: #a33039;
+  color: $color-white;
+}
+
+@media(max-width: 1175px) {
+  .bradford-container {
+    padding: 20px;
+  }
+}
+
+@media(max-width: 480px) {
+  .bradford-container {
+    padding: 10px;
+
+    h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      padding: 2px 0;
+    }
+  }
+
+  table {
+    font-size: 12px;
   }
 }

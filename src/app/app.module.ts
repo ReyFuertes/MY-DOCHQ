@@ -47,6 +47,7 @@ import { HomePageComponent } from './home/homepage/homepage.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { AbsenceModule } from './absence/absence.module';
 import { BradFordComponent } from './bradford-report/bradford-report.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { BradFordComponent } from './bradford-report/bradford-report.component';
     UnknownPageComponent,
     DialogComponent,
     BradFordComponent,
-
+    ProfileComponent,
     //temporary declaration
     HomePageComponent
   ],

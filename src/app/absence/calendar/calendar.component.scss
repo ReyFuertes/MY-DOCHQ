@@ -5,7 +5,7 @@
 }
 
 ::ng-deep .cal-month-view .cal-header .cal-cell {
-  background-color: $bg-red !important;
+  background-color: $color-red !important;
   color: $color-white !important;
   height: 50px;
   display: flex;
@@ -54,7 +54,7 @@
 
 ::ng-deep .cal-month-view .cal-cell-row .cal-cell:hover,
 .cal-month-view .cal-cell.cal-has-events.cal-open {
-  background-color: $bg-red;
+  background-color: $color-red;
 }
 
 ::ng-deep .cal-month-view .cal-cell-row .cal-cell:hover,

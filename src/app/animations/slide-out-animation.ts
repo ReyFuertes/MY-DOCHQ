@@ -19,7 +19,7 @@ export const slideInOutAnimation =
         })),
         transition(':enter', [
             style({
-                right: '-400%',
+                left: '0',
                 backgroundColor: 'rgba(0, 0, 0, 0)'
             }),
             animate('.5s ease-in-out', style({
@@ -29,7 +29,7 @@ export const slideInOutAnimation =
         ]),
         transition(':leave', [
             animate('.5s ease-in-out', style({
-                right: '-400%',
+                left: '-400%',
                 backgroundColor: 'rgba(0, 0, 0, 0)'
             }))
         ])

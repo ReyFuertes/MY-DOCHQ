@@ -2,65 +2,77 @@
   <div fxFlex="8" fxHide.lt-md class="sidebar_container">
     <i class="fas fa-bars"></i>
     <mat-list>
-      <mat-list-item fxLayoutAlign="center center"> <i class="fas fa-tachometer-alt"></i> Dashboard </mat-list-item>
-      <mat-list-item fxLayoutAlign="center center"> <i class="far fa-user"></i> Your Profile </mat-list-item>
-      <mat-list-item fxLayoutAlign="center center"> <i class="fas fa-cogs"></i> Settings </mat-list-item>
+      <mat-list-item (click)="selectMenu(1)" [ngClass]="{'active': getSidebarMenu() == 1}" class="active" fxLayoutAlign="center center"> <i class="fas fa-tachometer-alt"></i> Dashboard </mat-list-item>
+      <mat-list-item (click)="selectMenu(2)" [ngClass]="{'active': getSidebarMenu() == 2}" fxLayoutAlign="center center"> <i class="far fa-user"></i> Your Profile </mat-list-item>
+      <mat-list-item (click)="selectMenu(3)" [ngClass]="{'active': getSidebarMenu() == 3}" fxLayoutAlign="center center"> <i class="fas fa-cogs"></i> Settings </mat-list-item>
     </mat-list>
 
   </div>
-  <div fxFlex.lt-sm="100" fxFlex.gt-md="92" fxFlexFill>
-    <!-- top nav -->
+  <div  fxFlex.lt-sm="100" fxFlexFill>
+    <!-- top nav  fxFlex.gt-md="92" -->
     <div fxLayout="row" class="dashboard__top-nav">
       <div fxFlex.lt-md="100" fxFlex="70">
         <i class="fas fa-search"></i>
         <input type="text" class="top-nav__search--input" value="" />
       </div>
-      <div fxHide.lt-md="true" fxFlex="30">
+      <div fxHide.lt-md="true" fxLayoutAlign="center center" fxFlex="30">
         <img class="download-app-store-badges" src="/assets/svg/app-store-badge.svg">
         <img class="download-google-play-badges" src="/assets/img/logo/google-play-badge.png">
       </div>
     </div>
 
-    <!-- content -->
-    <div class="content-container">
+    <!-- dashboard content -->
+    <div *ngIf="getSidebarMenu() == 1" class="dashboard-container">
       <!-- 2 thumbnails -->
       <div fxLayout="row">
         <h3 class="content-container__title">Overview</h3>
       </div>
+
       <div class="content-container__analytics" fxLayout="row" fxLayoutAlign="space-evenly">
-        <div class="content__card" fxFlex.lt-sm="50" fxFlex.lt-md="100" fxFlex="50">
+        <div class="content__card--2thumbs" [ngClass]="{'active': getSelectedCard() == 1}" (click)="selectCard(1)" fxFlex.lt-sm="50" fxFlex.lt-md="100" fxFlex="50">
           <h2>157</h2>
           <p>Total Number of employees</p>
         </div>
-        <div class="content__card content__card--bg-green" fxFlex.lt-sm="50"  fxFlex.lt-md="100" fxFlex="50">
+        <div class="content__card--2thumbs" [ngClass]="{'active': getSelectedCard() == 2}" (click)="selectCard(2)" fxFlex.lt-sm="50"  fxFlex.lt-md="100" fxFlex="50">
           <h2>57</h2>
-          <p>Total Number of employees</p>
+          <p>You company level Bradford Score</p>
         </div>
       </div>
 
       <!-- calendar -->
-      <div fxLayout="row">
+      <div *ngIf="getSelectedCard() == 1" fxLayout="row">
         <app-calendar></app-calendar>
       </div>
 
       <!-- 3 thumbnails -->
-      <div class="content-container__analytics" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="content__card content__card-bottom" fxLayout="column" fxLayoutAlign="center center"  fxFlex="100" >
+      <div *ngIf="getSelectedCard() == 1" class="content-container__analytics" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="content__card content__card--3thumbs content__card-bottom" fxLayout="column" fxLayoutAlign="center center"  fxFlex="100" >
           <h3 class="content__card-title">DocHQ Services</h3>
           <button mat-button class="dochq-btn__primary">TALK TO US</button>
         </div>
-        <div class="content__card content__card-bottom" fxLayout="column" fxLayoutAlign="center center"  fxFlex="100">
+        <div class="content__card content__card--3thumbs content__card-bottom" fxLayout="column" fxLayoutAlign="center center"  fxFlex="100">
           <h3 class="content__card-title">£ 1/m/e</h3>
           <p>Total Number of employees</p>
         </div>
-        <div class="content__card content__card-bottom" fxLayout="column" fxLayoutAlign="center center"  fxFlex="100">
+        <div class="content__card content__card--3thumbs content__card-bottom" fxLayout="column" fxLayoutAlign="center center"  fxFlex="100">
           <h3 class="content__card-title">Mind Q</h3>
           <p>£ 50/em</p>
         </div>
       </div>
 
-      <app-bradford-report></app-bradford-report>
+      <app-bradford-report *ngIf="getSelectedCard() == 2"></app-bradford-report>
 
+
+    </div>
+
+    <!-- your profile content -->
+    <div *ngIf="getSidebarMenu() == 2">
+      <h1>Profile Content</h1>
+    </div>
+
+    <!-- settings content -->
+    <div *ngIf="getSidebarMenu() == 3">
+      <h1>Settings Content</h1>
     </div>
   </div>
 </div>

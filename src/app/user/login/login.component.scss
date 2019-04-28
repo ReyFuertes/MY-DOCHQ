@@ -42,7 +42,7 @@ h1 {
 }
 
 .login__card--left {
-  background-color: $bg-smoke;
+  background-color: $color-smoke;
   border-radius: 4px 0 0 4px;
   padding: 50px;
   min-height: 575px;
@@ -61,7 +61,7 @@ h1 {
 }
 
 .login__card--right {
-  background-color: $bg-black;
+  background-color: $color-black;
   border-radius: 0 4px 4px 0;
   min-height: 575px;
   padding: 50px;
@@ -103,7 +103,7 @@ h1 {
 }
 
 ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
-  background-color: $bg-white;
+  background-color: $color-white;
 }
 
 ::ng-deep .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
@@ -131,7 +131,7 @@ h1 {
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-  background-color: $bg-gray !important;
+  background-color: $color-gray !important;
 }
 
 ::ng-deep .mat-ripple-element {
@@ -169,7 +169,7 @@ h1 {
   margin: 50px 0;
 
   .dochq-btn__primary {
-    background-color: $bg-green;
+    background-color: $color-green;
     color: $color-white;
     border-radius: 20px;
     height: 40px;

@@ -1,42 +1,119 @@
-<div fxFlex="100" fxLayout="row" fxLayoutAlign="space-around center" class="bradford-container">
-  <div class="bradford-container__date-range">
-    <h3>Effective report period:</h3>
-    <div>
-      <span class="from">From: </span>
-      <mat-form-field floatLabel="never">
-        <input matInput [matDatepicker]="pickerFrom" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
-        <mat-datepicker #pickerFrom></mat-datepicker>
-      </mat-form-field>
+<div class="bradford-container">
+  <div class="bradford-container--inner" fxLayout.lt-sm="column" fxLayout.gt-md="row">
+    <div fxFlex.lt-md="100" fxFlex.gt-md="40" class="bradford-container__date-range">
+      <h3>Effective report period:</h3>
+      <div>
+        <span class="from">From: </span>
+        <mat-form-field floatLabel="never">
+          <input matInput [matDatepicker]="pickerFrom" disabled placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFrom disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <span class="to">To:</span>
+        <mat-form-field floatLabel="never">
+          <input matInput [matDatepicker]="pickerTo" disabled placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
     </div>
-    <div>
-      <span class="to">To:</span>
-      <mat-form-field floatLabel="never">
-        <input matInput [matDatepicker]="pickerTo" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-        <mat-datepicker #pickerTo></mat-datepicker>
-      </mat-form-field>
+
+    <div fxFlex.lt-md="100" fxFlex.gt-md="60" fxLayout.lt-md="column" fxLayout.gt-lg="row">
+      <!-- department -->
+      <div fxFlex.lt-md="100" fxFlex.gt-md="50" class="bradford-container__dept">
+        <h3>Department:</h3>
+        <div class="bradford-container__dept--field">
+          <mat-form-field floatLabel="never">
+            <mat-label>Accounting</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let a of accounting" [value]="a.value">
+                {{a.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Score -->
+      <div fxFlex.lt-md="100" fxFlex.gt-md="50" class="bradford-container__score">
+        <h3>Bradford score:</h3>
+        <div>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Score" value="75">
+          </mat-form-field>
+        </div>
+      </div>
     </div>
   </div>
-  <div>
-    <h3>Department:</h3>
-    <div>
-      <mat-form-field>
-        <mat-label>Accounting</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let a of accounting" [value]="a.value">
-            {{a.label}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+
+  <div fxLayout="row" class="mt-2">
+    <table class="bradford-container--table">
+      <thead>
+        <tr>
+          <th>ID Number:</th>
+          <th>Last name</th>
+          <th fxHide.lt-md>First name</th>
+          <th>Bradform score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="4" class="p-0">
+            <div class="table-content__container">
+              <table>
+                <tr *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]">
+                  <td>ABC-123-456-789</td>
+                  <td>Walker</td>
+                  <td fxHide.lt-md>George</td>
+                  <td>175</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <div fxLayout="row" fxLayoutAlign.lt-sm="center center" fxLayoutAlign="end end">
+              <button mat-button class="dochq-btn__primary">Download Report</button>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
+</div>
+
+<div class="warning-scale-container">
   <div>
-    <h3>Bradford score:</h3>
-    <div>
-      <mat-form-field floatLabel="never">
-        <input matInput placeholder="Score" value="75">
-      </mat-form-field>
-    </div>
+    <h3>Warning scale</h3>
+
+    <table class="warning-scale--table">
+      <tbody>
+        <tr>
+          <td class="warning-scale--bg-g">0 - 49</td>
+          <td></td>
+          <td>All OK!</td>
+        </tr>
+        <tr>
+          <td class="warning-scale--bg-y">49 - 128</td>
+          <td>Slight Concern</td>
+          <td>Discuss the concerns; hel the employee</td>
+        </tr>
+        <tr>
+          <td class="warning-scale--bg-o">128 - 399</td>
+          <td>Serious Concern</td>
+          <td>Wirten warning; Also be mindful of employees with Chronic or genuine repetitive issues; seek nurse help (e.g DocHQ nurse support); Count as one incident case of genuine issues.</td>
+        </tr>
+        <tr>
+          <td class="warning-scale--bg-r">399+</td>
+          <td>Major Concern</td>
+          <td>Line manager and HR manager should interview and consider dismissal</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

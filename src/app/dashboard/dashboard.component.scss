@@ -1,7 +1,7 @@
 @import '../../style/variables';
 
 :host {
-  background-color: $bg-smoke;
+  background-color: $color-smoke;
 }
 
 .fa-bars {
@@ -21,7 +21,7 @@
   height: 35px;
   border-radius: 20px;
   width: 300px;
-  background-color: $bg-smoke;
+  background-color: $color-smoke;
   border: none;
   outline: none;
   padding-left: 37px;
@@ -43,7 +43,7 @@
 }
 
 .dashboard__top-nav {
-  background-color: $bg-white;
+  background-color: $color-white;
   height: 75px;
   border-bottom: thin $border-color solid;
   align-items: center;
@@ -51,7 +51,17 @@
 
 .sidebar_container {
   min-width: 75px;
-  background-color: $bg-white;
+  background-color: $color-white;
+  max-width: 100px !important;
+}
+
+::ng-deep mat-list-item {
+  height: 60px !important;
+
+  &.active {
+    background-color: $color-green !important;
+    color: $color-white !important;
+  }
 }
 
 ::ng-deep .mat-list-item-content {
@@ -60,23 +70,23 @@
 
 ::ng-deep .mat-list-item {
   font-size: 12px !important;
-  margin-top: 20px;
+  margin-top: 0;
   color: $color-green !important;
   cursor: pointer;
-  padding: 10px 0 !important;
+  padding:  0 !important;
   width: 100%;
   height: 75px;
 
-  :hover {
+  &.active {
     background-color: $color-green !important;
     color: $color-white;
   }
 }
 
 ::ng-deep .mat-list-item-content {
-  padding: 10px 0 !important;
+  // padding-top: 10px !important;
   width: 100%;
-  height: 75px !important;
+  height: auto !important;
 }
 
 .fa-tachometer-alt,
@@ -85,7 +95,7 @@
   font-size: 28px;
 }
 
-.content-container {
+.dashboard-container {
   background-color: #ddd;
   min-height: calc(100vh - 76px);
   padding: 40px;
@@ -97,10 +107,6 @@
   }
 }
 
-.content__card--bg-green {
-  background-color: $bg-green !important;
-  color: $color-white !important;
-}
 
 .dochq-btn__primary {
   background-color: transparent;
@@ -112,10 +118,31 @@
   margin-top: 10px;
 }
 
-.content__card {
+
+.content__card--2thumbs {
+  cursor: pointer;
+  background-color: $color-green;
+  color: $color-white;
+  
+  &:not(.active) {
+    border-color: $color-green !important;
+  }
+
+  &.active {
+    background-color: $color-white !important;
+    color: $color-black !important;
+    
+  }
+}
+
+.content__card--3thumbs {
+  background-color: $color-white;
+  color: $color-black;
+}
+
+.content__card, .content__card--2thumbs {
   height: 170px;
   border: thin $border-color solid;
-  background-color: $bg-white;
   border-radius: 20px;
   margin: 20px 20px 20px 0;
   padding: 30px;
@@ -140,7 +167,7 @@
     width: 200px;
   }
 
-  .content-container {
+  .dashboard-container {
     padding: 10px;
   }
 
@@ -172,7 +199,7 @@
 }
 
 @media (max-width: 480px) {
-  .content-container {
+  .dashboard-container {
     padding: 5px;
 
     .content-container__title {
